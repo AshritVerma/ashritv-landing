@@ -228,24 +228,11 @@ body.page-projects a { color: inherit; }
 
 .rd-group-head h1 { font-size: clamp(2.6rem, 7vw, 5.25rem); margin-top: 1rem; }
 .rd-group .rd-lede { max-width: 52ch; margin-bottom: 2.5rem; }
-.rd-slots { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 20rem; }
-@media (max-width: 60rem) { .rd-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 30rem) { .rd-slots { grid-template-columns: 1fr; } }
-.rd-slots .pt-title { font-size: 1.4rem; }
-.rd-slots .pt-desc { font-size: 0.95rem; }
 .pt-slot { color: var(--faint); }
 .pt-slot .pt-art { border: 1px dashed var(--rule); }
 .pt-slot:hover, .pt-slot:focus-visible { transform: none; background: var(--bg); box-shadow: none; }
-/* Five slots don't fill a 3-wide grid: draw each tile's own hairline so the
-   leftover cell stays black instead of showing the rule color. */
-.rd-slots { background: transparent; border: 0; gap: 0; }
-.rd-slots > .pt { box-shadow: inset 0 0 0 0.5px var(--rule), 0 0 0 0.5px var(--rule); }
-.rd-slots > .pt:not(.pt-slot):hover, .rd-slots > .pt:not(.pt-slot):focus-visible {
-  box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 28%, transparent);
-}
-
 /* Group pages: end-of-page link to the full Projects page */
-.pg-more { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem 2rem; margin: 4rem 0 1rem; padding: 2rem 2.25rem; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; color: var(--fg, #fff); text-decoration: none; transition: border-color .25s, box-shadow .25s, background .25s; }
-.pg-more-q { font-size: clamp(1.35rem, 2.6vw, 2rem); font-weight: 500; letter-spacing: -.01em; }
-.pg-more-cta { font-size: 1.05rem; color: var(--pf-accent, #7cc4ff); white-space: nowrap; }
+.pg-more { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem 2rem; margin: 5rem 0 1.5rem; padding: 3.5rem 3rem; min-height: 14rem; align-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; color: var(--fg, #fff); text-decoration: none; transition: border-color .25s, box-shadow .25s, background .25s; }
+.pg-more-q { font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.05; max-width: 18ch; font-weight: 500; letter-spacing: -.01em; }
+.pg-more-cta { font-size: clamp(1.1rem, 1.6vw, 1.4rem); color: var(--pf-accent, #7cc4ff); white-space: nowrap; }
 .pg-more:hover { border-color: var(--pf-accent, #7cc4ff); background: color-mix(in srgb, var(--pf-accent, #7cc4ff) 8%, transparent); box-shadow: 0 0 28px color-mix(in srgb, var(--pf-accent, #7cc4ff) 28%, transparent); }
