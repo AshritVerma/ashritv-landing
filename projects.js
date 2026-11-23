@@ -108,6 +108,9 @@
       if (ok) shown++;
     });
     if (empty) empty.hidden = shown > 0;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-pf-section]'), function (sec) {
+      sec.hidden = !sec.querySelector('.pt:not([hidden])');
+    });
     Array.prototype.forEach.call(document.querySelectorAll('[data-filter-cat]'), function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-filter-cat') === cat));
     });
