@@ -1,0 +1,878 @@
+/* ashritv.com — "everything is a wave."
+   Dark-first, anchored at 420 nm (the laser). Each project carries its own
+   wavelength; the accent color is derived from physics, not a palette.
+   Instrument Serif for display — he builds instruments. Mono is reserved for
+   data: years, wavelengths, tags, and the agent. Motion is quiet and always
+   respects prefers-reduced-motion. */
+
+:root {
+  --bg: #0b0b10;
+  --fg: #ece9f1;
+  --muted: #a49fb3;
+  --faint: #757085;
+  --rule: #262330;
+  --card: #131118;
+  --accent: #9a7bff;
+  --accent-fg: #0b0b10;
+  --amber: #e8a83c;
+
+  --measure: 66ch;
+  --shell: 66rem;
+  --radius: 10px;
+
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "SFMono-Regular", "Menlo", "Consolas",
+    "Liberation Mono", monospace;
+}
+
+:root[data-theme="light"] {
+  --bg: #faf8f4;
+  --fg: #1a1622;
+  --muted: #5d5769;
+  --faint: #8a8494;
+  --rule: #e3dfd7;
+  --card: #f1eee7;
+  --accent: #6d40e8;
+  --accent-fg: #faf8f4;
+  --amber: #a16207;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration: none;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: 0.5rem 0.75rem;
+  z-index: 10;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* ── Layout shell ── */
+.site-header,
+main,
+.site-footer {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ── Header ── */
+.site-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding-top: 1.75rem;
+  padding-bottom: 1.25rem;
+}
+.site-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--fg);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.site-mark-dot {
+  display: inline-block;
+  width: 0.15em;
+}
+.site-header nav {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+.site-header nav a {
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.site-header nav a:hover {
+  color: var(--fg);
+}
+.site-header nav a[aria-current="page"] {
+  color: var(--accent);
+}
+.site-header nav a[aria-current="page"]::before {
+  content: "/";
+  margin-right: 0.15em;
+  color: var(--faint);
+}
+.theme-toggle {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  cursor: pointer;
+}
+.theme-toggle:hover {
+  color: var(--fg);
+  border-color: var(--faint);
+}
+
+main {
+  flex: 1 0 auto;
+  padding-top: clamp(2rem, 6vw, 4rem);
+  padding-bottom: 4rem;
+}
+
+/* ── Footer ── */
+.site-footer {
+  padding-bottom: 2.5rem;
+  color: var(--faint);
+  font-size: 0.85rem;
+}
+.spectrum-rule {
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    #9a7bff,
+    #6f9dff,
+    #5fd4c0,
+    #b8e05f,
+    #f0b429,
+    #f07b6a
+  );
+  opacity: 0.65;
+  margin-bottom: 1.25rem;
+}
+.footer-cols {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-links {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 1rem;
+}
+.footer-links a:first-child {
+  margin-left: 0;
+}
+.footer-links a:hover {
+  color: var(--fg);
+}
+.site-footer a {
+  color: var(--muted);
+}
+.footer-note {
+  color: var(--faint);
+  max-width: var(--measure);
+}
+
+/* ── Typography ── */
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  margin: 0 0 0.75rem;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  margin: 2.25rem 0 0.6rem;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.4rem;
+}
+p,
+ul,
+ol,
+blockquote,
+figure,
+pre {
+  max-width: var(--measure);
+}
+
+.prose {
+  max-width: var(--measure);
+  font-size: 1.02rem;
+}
+.prose h2 {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
+}
+.prose code {
+  font-family: var(--mono);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.05em 0.3em;
+  font-size: 0.88em;
+}
+.prose pre {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+}
+.prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+blockquote {
+  margin-inline: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--faint);
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+/* "What broke" — the signature section. Flagged, not buried. */
+.prose h2#what-broke {
+  color: var(--amber);
+  border-top-color: var(--amber);
+}
+.prose h2#what-broke::before {
+  content: "failure report";
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.85;
+  margin-bottom: 0.3rem;
+}
+
+/* ── Home: hero ── */
+.hero {
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+.hero-kicker {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 1.25rem;
+}
+.hero-name {
+  font-size: clamp(3.2rem, 9.5vw, 6.75rem);
+  line-height: 0.98;
+  margin: 0 0 1.25rem;
+}
+.positioning {
+  color: var(--muted);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.5;
+  max-width: 44ch;
+  margin: 0 0 1rem;
+}
+.positioning em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.08em;
+  color: var(--accent);
+}
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--faint);
+  margin: 0;
+}
+.wave-field {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  height: clamp(120px, 22vw, 210px);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.wave-field canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Home: work index ── */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+.section-head h2 {
+  margin: 0;
+}
+.section-note {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--faint);
+  margin: 0;
+}
+.section-lede {
+  color: var(--muted);
+}
+
+.work-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+/* Spectral ink: the raw wavelength color is tuned for dark ground; mix it
+   toward black when the page is light so it keeps contrast. */
+.work-row,
+.project {
+  --w-ink: var(--w, var(--accent));
+}
+:root[data-theme="light"] .work-row,
+:root[data-theme="light"] .project {
+  --w-ink: color-mix(in srgb, var(--w, var(--accent)) 55%, #1a1622);
+}
+.work-row {
+  border-top: 1px solid var(--rule);
+}
+.work-row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.work-row > a {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.15rem 0.5rem;
+  text-decoration: none;
+  color: var(--fg);
+  position: relative;
+}
+.work-row > a::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--w-ink);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+.work-row > a:hover::before,
+.work-row > a:focus-visible::before {
+  opacity: 1;
+}
+.work-index {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.work-main {
+  min-width: 0;
+}
+.work-title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+.work-row > a:hover .work-title {
+  color: var(--w-ink);
+}
+.work-oneline {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  max-width: 58ch;
+}
+.work-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.work-year {
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.work-lambda {
+  color: var(--w-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.work-swatch {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--w-ink);
+}
+
+/* ── Tags (shared) ── */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  font-family: var(--mono);
+}
+.tags li {
+  font-size: 0.72rem;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.08rem 0.55rem;
+}
+
+/* ── Project page ── */
+.crumb {
+  font-family: var(--mono);
+  color: var(--faint);
+  font-size: 0.78rem;
+  margin: 0 0 1rem;
+}
+.crumb a {
+  color: var(--faint);
+  text-decoration: none;
+}
+.crumb a:hover {
+  color: var(--fg);
+}
+.project-header h1 {
+  font-size: clamp(2.6rem, 6.5vw, 4rem);
+}
+.oneline {
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  max-width: 52ch;
+}
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+.meta-item {
+  color: var(--muted);
+}
+.meta-lambda {
+  color: var(--w-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.meta-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+.meta-link:hover {
+  text-decoration: underline;
+}
+.dateline {
+  font-family: var(--mono);
+  color: var(--faint);
+  font-size: 0.8rem;
+  margin: 0 0 1rem;
+}
+
+.media {
+  margin: 1.75rem 0;
+  max-width: var(--measure);
+}
+.media video,
+.media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.media figcaption {
+  font-family: var(--mono);
+  color: var(--faint);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ── Agent console ── */
+.agent {
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+.agent-frame {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+}
+.agent-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 1.1rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--faint);
+}
+.agent-badge {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.05rem 0.6rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+.agent-inner {
+  padding: 1.25rem 1.1rem 1.1rem;
+}
+.agent-inner h2 {
+  margin: 0 0 0.4rem;
+}
+.agent-intro {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0;
+}
+.agent-fallback {
+  color: var(--muted);
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+}
+.agent-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: var(--measure);
+  margin-top: 0.5rem;
+}
+.agent-form input {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+}
+.agent-form input::placeholder {
+  color: var(--faint);
+}
+.agent-form input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+.agent-form button {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+}
+.agent-form button:hover {
+  filter: brightness(1.08);
+}
+.agent-form button:disabled,
+.agent-form input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: none;
+}
+.agent-status {
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 0.6rem;
+  min-height: 1.2em;
+}
+.agent-optout {
+  color: var(--faint);
+  font-size: 0.78rem;
+  margin-top: 0.75rem;
+}
+.agent-optout input {
+  margin-right: 0.3rem;
+  accent-color: var(--accent);
+}
+
+/* The agent's state indicator — a held note, not a blink. */
+.agent-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: middle;
+  animation: agent-pulse 1.2s ease-in-out infinite;
+}
+@keyframes agent-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-dot {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ── Chat log ── */
+.agent-log {
+  max-width: var(--measure);
+  margin-bottom: 0.75rem;
+}
+.agent-log:empty {
+  display: none;
+}
+.msg {
+  margin: 0.9rem 0;
+}
+.msg-user .msg-body {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  color: var(--fg);
+  border-left: 2px solid var(--accent);
+  padding-left: 0.75rem;
+}
+.msg-user .msg-body::before {
+  content: "> ";
+  color: var(--accent);
+}
+.msg-assistant .msg-body {
+  color: var(--fg);
+  white-space: pre-wrap;
+}
+
+/* Provenance chips */
+.sources {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-family: var(--mono);
+}
+.sources-label {
+  color: var(--faint);
+  font-size: 0.72rem;
+}
+.chip {
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+}
+.chip:hover {
+  border-color: var(--accent);
+}
+
+/* Draft intro box — deliberately marked "not sent" */
+.draft {
+  margin-top: 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.9rem;
+  background: var(--bg);
+  max-width: var(--measure);
+}
+.draft-head {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+.draft-from {
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+}
+.draft-body {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+}
+.draft-note {
+  color: var(--faint);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.4rem;
+}
+
+/* ── /logs feed ── */
+.logs-list {
+  list-style: none;
+  padding: 0;
+}
+.log-entry {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+.log-q {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.log-a {
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+.log-refused {
+  font-style: italic;
+}
+
+/* Provenance target: highlight the section a chip points to. */
+:target {
+  scroll-margin-top: 1rem;
+}
+.prose h2:target,
+.build-entry:target {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin-left: -0.9rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Empty states / logs / builds ── */
+.empty-state {
+  color: var(--muted);
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  max-width: var(--measure);
+}
+.build-log {
+  list-style: none;
+  padding: 0;
+}
+.build-entry {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── Mobile ── */
+@media (max-width: 40rem) {
+  .site-header {
+    gap: 0.5rem 1rem;
+  }
+  .theme-toggle {
+    margin-left: 0;
+    order: 3;
+  }
+  .work-row > a {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding-inline: 0;
+  }
+  .work-index {
+    display: none;
+  }
+  .work-side {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .footer-cols {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
