@@ -164,6 +164,8 @@ body.page-projects a { color: inherit; }
   font-size: clamp(2.5rem, 6vw, 4.75rem); line-height: 0.98; letter-spacing: -0.02em;
   margin: 0 0 1rem; text-wrap: balance;
 }
+.pf-item-why { font-size: 1rem; line-height: 1.55; max-width: 60ch; margin: 1rem 0 0; }
+.pf-item-why-k { display: block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pf-accent); margin-bottom: .25rem; }
 .pf-item-oneline { font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.45; color: var(--muted); max-width: 52ch; margin: 0; }
 .pf-item-art { position: relative; min-height: 16rem; border: 1px solid var(--rule); }
 .pf-item-art .pt-art { position: absolute; inset: 1rem; }
@@ -241,3 +243,9 @@ body.page-projects a { color: inherit; }
 .rd-slots > .pt:not(.pt-slot):hover, .rd-slots > .pt:not(.pt-slot):focus-visible {
   box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 28%, transparent);
 }
+
+/* Group pages: end-of-page link to the full Projects page */
+.pg-more { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem 2rem; margin: 4rem 0 1rem; padding: 2rem 2.25rem; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; color: var(--fg, #fff); text-decoration: none; transition: border-color .25s, box-shadow .25s, background .25s; }
+.pg-more-q { font-size: clamp(1.35rem, 2.6vw, 2rem); font-weight: 500; letter-spacing: -.01em; }
+.pg-more-cta { font-size: 1.05rem; color: var(--pf-accent, #7cc4ff); white-space: nowrap; }
+.pg-more:hover { border-color: var(--pf-accent, #7cc4ff); background: color-mix(in srgb, var(--pf-accent, #7cc4ff) 8%, transparent); box-shadow: 0 0 28px color-mix(in srgb, var(--pf-accent, #7cc4ff) 28%, transparent); }
