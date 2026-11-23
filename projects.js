@@ -99,25 +99,53 @@
   var cat = 'All', tag = null;
   Array.prototype.forEach.call(document.querySelectorAll('[data-pf-controls]'), function (el) { el.hidden = false; });
 
+  function matches(t) {
+    return (cat === 'All' || t.getAttribute('data-cat') === cat) &&
+      (!tag || (' ' + t.getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') !== -1);
+  }
+
+  // FLIP: remember where every visible tile is, apply the filter, then slide
+  // the tiles that stay from their old spots to their new ones and fade in the
+  // ones that appear, so a category's tiles visibly gather together.
   function apply() {
+    var before = new Map();
+    tiles.forEach(function (t) { if (!t.hidden) before.set(t, t.getBoundingClientRect()); });
+
     var shown = 0;
     tiles.forEach(function (t) {
-      var ok = (cat === 'All' || t.getAttribute('data-cat') === cat) &&
-        (!tag || (' ' + t.getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') !== -1);
+      var ok = matches(t);
       t.hidden = !ok;
       if (ok) shown++;
     });
     if (empty) empty.hidden = shown > 0;
-    Array.prototype.forEach.call(document.querySelectorAll('[data-pf-section]'), function (sec) {
-      sec.hidden = !sec.querySelector('.pt:not([hidden])');
-    });
     Array.prototype.forEach.call(document.querySelectorAll('[data-filter-cat]'), function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-filter-cat') === cat));
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-filter-tag]'), function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-filter-tag') === tag));
     });
-    requestAnimationFrame(drawAll);
+    drawAll();
+
+    if (reduce || !tiles[0] || !tiles[0].animate) return;
+    var i = 0;
+    tiles.forEach(function (t) {
+      if (t.hidden) return;
+      var now = t.getBoundingClientRect();
+      var was = before.get(t);
+      if (was) {
+        var dx = was.left - now.left, dy = was.top - now.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        t.animate(
+          [{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }],
+          { duration: 520, easing: 'cubic-bezier(.2,.75,.2,1)' }
+        );
+      } else {
+        t.animate(
+          [{ opacity: 0, transform: 'scale(.92)' }, { opacity: 1, transform: 'none' }],
+          { duration: 420, delay: Math.min(i++ * 18, 260), easing: 'ease-out', fill: 'backwards' }
+        );
+      }
+    });
   }
 
   document.addEventListener('click', function (e) {
