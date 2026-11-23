@@ -10,7 +10,7 @@ body.page-projects {
   --faint: rgba(255, 255, 255, 0.34);
   --rule: #2b2b2b;
   --card: #0d0d0d;
-  --accent: #ff4d2e;
+  --accent: #7cc4ff;
   --accent-fg: #000;
   --mh-display: "neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -115,13 +115,13 @@ body.page-projects a { color: inherit; }
   z-index: 5;
   outline: none;
   transform: scale(1.045);
-  background: color-mix(in srgb, var(--pf-accent) 9%, #000);
-  box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--pf-accent) 7%, #000);
+  box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 28%, transparent);
 }
 .pt.is-pressed { animation: pt-press 0.32s ease-out; }
 @keyframes pt-press {
-  0% { box-shadow: 0 0 0 1px var(--pf-accent), 0 0 4rem 1rem color-mix(in srgb, var(--pf-accent) 75%, transparent); }
-  100% { box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 45%, transparent); }
+  0% { box-shadow: 0 0 0 1px var(--pf-accent), 0 0 4rem 1rem color-mix(in srgb, var(--pf-accent) 45%, transparent); }
+  100% { box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 28%, transparent); }
 }
 .pt-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; }
 .pt-mark {
@@ -191,4 +191,53 @@ body.page-projects a { color: inherit; }
   .pt, .pt-art img { transition: none; }
   .pt:hover, .pt:focus-visible { transform: none; }
   .pt.is-pressed { animation: none; }
+}
+
+/* ── Reading pages: /blog, /blog/<slug>, /portfolio/<group> ──
+   Same black-and-white Media Lab look, set for reading: bigger body type,
+   more contrast on secondary text, and a comfortable line length. */
+.rd { --muted: rgba(255, 255, 255, 0.74); --faint: rgba(255, 255, 255, 0.5); }
+.rd-lede { font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.5; max-width: 46ch; }
+
+.rd-list { list-style: none; margin: 0 0 3rem; padding: 0; border-top: 1px solid var(--rule); max-width: 52rem; }
+.rd-list li { border-bottom: 1px solid var(--rule); }
+.rd-item { display: grid; gap: 0.35rem; padding: 1.4rem 0; text-decoration: none; }
+.rd-item:hover .rd-title, .rd-item:focus-visible .rd-title { color: var(--pf-accent); }
+.rd-item:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 4px; }
+.rd-date { font-size: 0.85rem; color: var(--faint); font-variant-numeric: tabular-nums; }
+.rd-title { font-family: var(--mh-display); font-weight: 700; font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.15; letter-spacing: -0.005em; }
+.rd-summary { font-size: 1.05rem; line-height: 1.5; color: var(--muted); max-width: 60ch; }
+
+.rd-next ul { list-style: none; margin: 0; padding: 0; max-width: 52rem; }
+.rd-next li { display: grid; gap: 0.25rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); color: var(--muted); }
+.rd-next .rd-title { font-size: 1.15rem; color: var(--fg); }
+
+.rd-post { max-width: 44rem; }
+.rd-post-head { padding: 1.25rem 0 1.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.75rem; }
+.rd-post-head h1 { font-family: var(--mh-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 0.75rem; text-wrap: balance; }
+.rd-body { font-size: 1.15rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9); }
+.rd-body p, .rd-body ul, .rd-body ol { margin: 0 0 1.2em; }
+.rd-body li { margin-bottom: 0.5em; }
+.rd-body a { text-decoration: underline; text-underline-offset: 3px; }
+.rd-body a:hover { color: var(--pf-accent); }
+.rd-back { margin: 2.5rem 0 0; font-size: 1rem; color: var(--muted); }
+.rd-back a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+.rd-back a:hover { color: var(--pf-accent); }
+
+.rd-group-head h1 { font-size: clamp(2.6rem, 7vw, 5.25rem); margin-top: 1rem; }
+.rd-group .rd-lede { max-width: 52ch; margin-bottom: 2.5rem; }
+.rd-slots { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 20rem; }
+@media (max-width: 60rem) { .rd-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 30rem) { .rd-slots { grid-template-columns: 1fr; } }
+.rd-slots .pt-title { font-size: 1.4rem; }
+.rd-slots .pt-desc { font-size: 0.95rem; }
+.pt-slot { color: var(--faint); }
+.pt-slot .pt-art { border: 1px dashed var(--rule); }
+.pt-slot:hover, .pt-slot:focus-visible { transform: none; background: var(--bg); box-shadow: none; }
+/* Five slots don't fill a 3-wide grid: draw each tile's own hairline so the
+   leftover cell stays black instead of showing the rule color. */
+.rd-slots { background: transparent; border: 0; gap: 0; }
+.rd-slots > .pt { box-shadow: inset 0 0 0 0.5px var(--rule), 0 0 0 0.5px var(--rule); }
+.rd-slots > .pt:not(.pt-slot):hover, .rd-slots > .pt:not(.pt-slot):focus-visible {
+  box-shadow: 0 0 0 1px var(--pf-accent), 0 0 2.2rem 0.25rem color-mix(in srgb, var(--pf-accent) 28%, transparent);
 }

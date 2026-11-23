@@ -4,7 +4,7 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function accent(el) {
-    return getComputedStyle(el).getPropertyValue('--pf-accent').trim() || '#ff4d2e';
+    return getComputedStyle(el).getPropertyValue('--pf-accent').trim() || '#7cc4ff';
   }
 
   function hash(s) {
