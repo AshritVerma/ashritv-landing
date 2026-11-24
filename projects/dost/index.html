@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Döst — Ashrit Verma</title>
-  <meta name="description" content="An AI over your messages that helps you keep up and deepen your relationships. Runs as Jarvis in iMessage: replies in your voice, remembers each person and learns from every correction.">
+  <meta name="description" content="A private AI that helps you stay close to the people who matter: it remembers each relationship, notices who you&#39;ve drifted from, and helps you reach back out.">
   <link rel="canonical" href="https://ashritv.com/projects/dost">
   <meta name="color-scheme" content="dark light">
   <meta property="og:title" content="Döst — Ashrit Verma">
-  <meta property="og:description" content="An AI over your messages that helps you keep up and deepen your relationships. Runs as Jarvis in iMessage: replies in your voice, remembers each person and learns from every correction.">
+  <meta property="og:description" content="A private AI that helps you stay close to the people who matter: it remembers each relationship, notices who you&#39;ve drifted from, and helps you reach back out.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ashritv.com/projects/dost">
   <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap">
-  <link rel="stylesheet" href="/styles.css?v=mwt60q0s">
-  <link rel="stylesheet" href="/projects.css?v=mwt60q0s">
+  <link rel="stylesheet" href="/styles.css?v=mwty29i0">
+  <link rel="stylesheet" href="/projects.css?v=mwty29i0">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body class="page-projects">
@@ -35,8 +35,8 @@
     <div class="pf-item-text">
       <p class="pt-tags pf-item-tags">#agents #memory #hci #startup</p>
       <h1>Döst</h1>
-      <p class="pf-item-oneline">An AI over your messages that helps you keep up and deepen your relationships. Runs as Jarvis in iMessage: replies in your voice, remembers each person and learns from every correction.</p>
-      
+      <p class="pf-item-oneline">A private AI that helps you stay close to the people who matter: it remembers each relationship, notices who you&#39;ve drifted from, and helps you reach back out.</p>
+      <p class="pf-item-why"><span class="pf-item-why-k">Why I made it</span> I watched close friendships drift after moving to Cambridge, and I had lost much of my mother tongue. I wanted something that helps me show up for people, not replace them. Döst comes from dost, the Hindi and Urdu word for friend.</p>
     </div>
     <div class="pf-item-art"><span class="pt-art"><canvas data-seed="dost" aria-hidden="true"></canvas></span></div>
   </header>
@@ -47,6 +47,36 @@
     <div><dt>Private repos</dt><dd>imessage-mcp</dd></div>
   </dl>
   
+  <div class="pf-about">
+  <section class="pf-about-sec" aria-labelledby="pf-about-0">
+    <h2 id="pf-about-0">The problem is drift</h2>
+    <p>In 2023 the US Surgeon General called loneliness an epidemic, with about half of US adults reporting it. Most people aren&#39;t short of people. They drift: friendships fade when no one reaches out, family ties thin across distance and generations, and families who move between countries lose the language that held them together.</p>
+    <p>The tools we talk through are built to keep us in the app, and the fastest-growing AI products are companions that stand in for people. Döst does the opposite: it remembers what matters about the people in your life and nudges you back toward them.</p>
+    
+  </section>
+  <section class="pf-about-sec" aria-labelledby="pf-about-1">
+    <h2 id="pf-about-1">What it does</h2>
+    
+    <ul><li>Remembers each relationship. It reads back through your message history and builds a living memory of every relationship, so you never have to log anything.</li><li>Notices who you&#39;ve drifted from. When you haven&#39;t talked to a friend in months, it suggests you reach out.</li><li>Finds time to meet. When someone wants to get together, it checks your calendar and proposes times that work.</li><li>Bridges language. It reads Hindi, so I can talk with my mother in the language I lost growing up.</li></ul>
+  </section>
+  <section class="pf-about-sec" aria-labelledby="pf-about-2">
+    <h2 id="pf-about-2">How it&#39;s built</h2>
+    <p>A memory architecture that learns what matters in each relationship over months, instead of piling up notes. Each person gets their own private machine and model, and can see and control everything it knows. You choose how much autonomy it gets: memory only, drafts you approve, or full replies.</p>
+    <p>Every day an evaluator reviews what went well and what didn&#39;t, and the system improves itself for the next day. It works for one person alone and gets stronger when both sides of a friendship use it.</p>
+    
+  </section>
+  <section class="pf-about-sec" aria-labelledby="pf-about-3">
+    <h2 id="pf-about-3">Where it is now</h2>
+    <p>Döst runs every day on my iMessage, with WhatsApp next. Everyone whose messages it reads has consented. It has served me, my friends, my family, and their families, and their feedback shaped its core design.</p>
+    <p>Next is a co-designed pilot with about 30 MIT students, especially graduate and international students far from home. Success is measured in human contact, not time spent with the AI:</p>
+    <ul><li>Reconnections with people you hadn&#39;t talked to in 60+ days</li><li>In-person meetups arranged</li><li>Loneliness (UCLA Loneliness Scale) and closeness ratings before, during, and after</li><li>Whether people talk more with each other, not more with the AI</li></ul>
+  </section>
+  <section class="pf-about-sec" aria-labelledby="pf-about-4">
+    <h2 id="pf-about-4">Principles</h2>
+    
+    <ul><li>Consent first: contacts can opt out, and memory stays visible to and deletable by the user.</li><li>Closeness, not engagement: if time with the AI rises without more human contact, the design changes.</li><li>Care with people: it never suggests reconnecting with someone you&#39;ve distanced yourself from, and it points to real support rather than acting as a therapist.</li></ul>
+  </section>
+</div>
   <section class="pf-build" aria-labelledby="pf-build-h">
     <h2 id="pf-build-h">Stack, cost and what it needs</h2>
     <div class="pf-build-cols">
@@ -105,7 +135,7 @@
     <p class="footer-links"><a href="/">home</a> <a href="/projects">projects</a> <a href="/blog">blog</a> <a href="https://github.com/AshritVerma">github</a></p>
   </div>
 </footer>
-  <script src="/theme.js?v=mwt60q0s" defer></script>
-  <script src="/projects.js?v=mwt60q0s" defer></script>
+  <script src="/theme.js?v=mwty29i0" defer></script>
+  <script src="/projects.js?v=mwty29i0" defer></script>
 </body>
 </html>

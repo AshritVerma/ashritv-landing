@@ -250,3 +250,12 @@ body.page-projects a { color: inherit; }
 .pf-build-needs { margin: 0; padding-left: 1.1rem; font-size: 0.95rem; line-height: 1.55; }
 .pf-build-needs li::marker { color: var(--pf-accent); }
 .pf-build-tbd { color: var(--faint); }
+
+/* Long-form sections on a project page (content/projects.json "about"). */
+.pf-about { margin: 1rem 0 0; }
+.pf-about-sec { margin: 2.25rem 0 0; padding-top: 2rem; border-top: 1px solid var(--rule); }
+.pf-about-sec h2 { font-family: var(--mh-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 .9rem; }
+.pf-about-sec p, .pf-about-sec li { font-size: 1.02rem; line-height: 1.6; max-width: 68ch; }
+.pf-about-sec p { margin: 0 0 .9rem; }
+.pf-about-sec ul { margin: 0; padding-left: 1.2rem; }
+.pf-about-sec li { margin-bottom: .45rem; }
